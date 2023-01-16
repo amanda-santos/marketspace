@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Center, Heading, ScrollView, Text, VStack } from "native-base";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
@@ -8,6 +9,7 @@ import LogoSvg from "@assets/logo.svg";
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 type FormDataProps = {
   email: string;
@@ -29,6 +31,12 @@ export const SignIn = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  const handleClickSignUp = () => {
+    navigation.navigate("signUp");
+  };
 
   const handleSignIn = async ({ email, password }: FormDataProps) => {
     try {
@@ -60,6 +68,7 @@ export const SignIn = () => {
         <Center
           backgroundColor="gray.200"
           px={12}
+          py={8}
           flex={1}
           borderBottomRadius={20}
         >
@@ -118,7 +127,7 @@ export const SignIn = () => {
 
         <Center px={12} py={16}>
           <Text mb={4}>Ainda não tem acesso?</Text>
-          <Button title="Criar uma conta" />
+          <Button title="Criar uma conta" onPress={handleClickSignUp} />
         </Center>
       </VStack>
     </ScrollView>
