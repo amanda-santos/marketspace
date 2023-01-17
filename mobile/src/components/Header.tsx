@@ -7,7 +7,7 @@ import { Button } from "./Button";
 
 export const Header = () => {
   return (
-    <Flex direction="row" align="center" mb={8}>
+    <Flex direction="row" align="center">
       <Image
         source={defaultAvatar}
         defaultSource={defaultAvatar}

@@ -1,16 +1,22 @@
 import { Box, Flex, Link, Spacer, Text, useTheme, VStack } from "native-base";
-import { ArrowRight, Tag } from "phosphor-react-native";
+import {
+  ArrowRight,
+  MagnifyingGlass,
+  Sliders,
+  Tag,
+} from "phosphor-react-native";
 
 import { Header } from "@components/Header";
+import { Input } from "@components/Input";
 
 export const Home = () => {
   const { colors } = useTheme();
 
   return (
-    <VStack px={6} py={8}>
+    <VStack flex={1} px={6} py={8} backgroundColor="gray.200">
       <Header />
 
-      <Text fontSize="md" color="gray.500">
+      <Text fontSize="md" color="gray.500" mt={8}>
         Seus produtos anunciados para venda
       </Text>
 
@@ -46,6 +52,23 @@ export const Home = () => {
           <ArrowRight color={colors.blue["700"]} size={16} />
         </Link>
       </Flex>
+
+      <Text fontSize="md" color="gray.500" mt={8} mb={2}>
+        Compre produtos variados
+      </Text>
+
+      <Input
+        placeholder="Buscar anúncio"
+        InputRightElement={
+          <Flex direction="row" align="center" mr={4}>
+            <MagnifyingGlass size={20} color={colors.gray["600"]} />
+            <Text fontSize="xl" mx={2} color="gray.300">
+              |
+            </Text>
+            <Sliders size={20} color={colors.gray["600"]} />
+          </Flex>
+        }
+      />
     </VStack>
   );
 };
