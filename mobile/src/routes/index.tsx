@@ -13,7 +13,7 @@ export const Routes = () => {
   return (
     <Box flex={1} bg="gray.100">
       <NavigationContainer>
-        <AuthRoutes />
+        <AppRoutes />
       </NavigationContainer>
     </Box>
   );
