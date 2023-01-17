@@ -1,5 +1,11 @@
-import { Box } from "native-base";
+import { VStack } from "native-base";
+
+import { Header } from "@components/Header";
 
 export const Home = () => {
-  return <Box>Home</Box>;
+  return (
+    <VStack px={6} py={8}>
+      <Header />
+    </VStack>
+  );
 };

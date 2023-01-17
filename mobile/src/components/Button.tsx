@@ -1,11 +1,23 @@
-import { Button as ButtonNativeBase, IButtonProps, Text } from "native-base";
+import { ReactNode } from "react";
+import {
+  Button as ButtonNativeBase,
+  Flex,
+  IButtonProps,
+  Text,
+} from "native-base";
 
 type ButtonProps = IButtonProps & {
   title: string;
+  icon?: ReactNode;
   variant?: "black" | "blue" | "grey";
 };
 
-export const Button = ({ title, variant = "grey", ...rest }: ButtonProps) => {
+export const Button = ({
+  title,
+  icon,
+  variant = "grey",
+  ...rest
+}: ButtonProps) => {
   const getBackgroundColor = (variant: string) => {
     switch (variant) {
       case "black":
@@ -19,6 +31,16 @@ export const Button = ({ title, variant = "grey", ...rest }: ButtonProps) => {
   };
 
   const backgroundColor = getBackgroundColor(variant);
+
+  const text = (
+    <Text
+      color={variant === "grey" ? "gray.700" : "gray.100"}
+      fontFamily="heading"
+      fontSize="sm"
+    >
+      {title}
+    </Text>
+  );
 
   return (
     <ButtonNativeBase
@@ -34,13 +56,13 @@ export const Button = ({ title, variant = "grey", ...rest }: ButtonProps) => {
       }}
       {...rest}
     >
-      <Text
-        color={variant === "grey" ? "gray.700" : "gray.100"}
-        fontFamily="heading"
-        fontSize="sm"
-      >
-        {title}
-      </Text>
+      {icon ? (
+        <Flex direction="row" align="center">
+          {icon} {text}
+        </Flex>
+      ) : (
+        <>{text}</>
+      )}
     </ButtonNativeBase>
   );
 };
