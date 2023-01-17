@@ -105,14 +105,14 @@ export const SignUp = () => {
         <Center
           backgroundColor="gray.200"
           px={12}
-          py={8}
+          py={12}
           flex={1}
           borderBottomRadius={20}
         >
-          <Center mb={16}>
-            <LogoSvg />
+          <Center mb={6}>
+            <LogoSvg width={60} />
 
-            <Heading fontSize="lg" mt={4} mb={3}>
+            <Heading fontSize="lg" mt={1} mb={3}>
               Boas vindas!
             </Heading>
             <Text textAlign="center">
