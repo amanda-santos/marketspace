@@ -1,9 +1,9 @@
 import { Flex, Image, Spacer, Text } from "native-base";
-
-import defaultAvatar from "@assets/default-avatar.png";
 import { Plus } from "phosphor-react-native";
 
-import { Button } from "./Button";
+import { Button } from "@components/Button";
+
+import defaultAvatar from "@assets/default-avatar.png";
 
 export const Header = () => {
   return (
