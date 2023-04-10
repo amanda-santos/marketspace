@@ -8,11 +8,15 @@ import { useTheme } from "native-base";
 
 import { Home } from "@screens/Home";
 import { MyAds } from "@screens/MyAds";
+import { Product } from "@screens/Product";
 
 type AppRoutes = {
   home: undefined;
   myAds: undefined;
   signOut: undefined;
+  product: {
+    productId: string;
+  };
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -66,11 +70,11 @@ export const AppRoutes = () => {
         }}
       />
 
-      {/* <Screen
-        name="exercise"
-        component={Exercise}
-        options={{ tabBarButton: () => null }}
-      /> */}
+      <Screen
+        name="product"
+        component={Product}
+        options={{ tabBarButton: () => null, tabBarStyle: { display: "none" } }}
+      />
     </Navigator>
   );
 };

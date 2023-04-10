@@ -5,22 +5,28 @@ import { ProductCard } from "@components/ProductCard";
 
 export const ProductList = (): ReactElement => {
   return (
-    <Box mt={4}>
-      <HStack justifyContent="space-between">
-        <VStack space={4}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </VStack>
-        <VStack space={4}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </VStack>
-      </HStack>
+    <Box mt={2} mr={4}>
+      <VStack justifyContent="space-between" space={4}>
+        <HStack width="50%" space={4}>
+          <ProductCard id="1" isNew />
+          <ProductCard id="2" isNew={false} />
+        </HStack>
+
+        <HStack width="50%" space={4}>
+          <ProductCard id="2" isNew={false} />
+          <ProductCard id="1" isNew />
+        </HStack>
+
+        <HStack width="50%" space={4}>
+          <ProductCard id="1" isNew />
+          <ProductCard id="2" isNew={false} />
+        </HStack>
+
+        <HStack width="50%" space={4}>
+          <ProductCard id="2" isNew={false} />
+          <ProductCard id="1" isNew />
+        </HStack>
+      </VStack>
     </Box>
   );
 };
