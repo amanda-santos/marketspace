@@ -1,9 +1,18 @@
 import { ReactElement } from "react";
 import { Box, Flex, Link, Spacer, Text, useTheme } from "native-base";
 import { ArrowRight, Tag } from "phosphor-react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 export const ActiveAds = (): ReactElement => {
   const { colors } = useTheme();
+
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const handleClickMyAds = () => {
+    navigation.navigate("myAds");
+  };
 
   return (
     <>
@@ -36,7 +45,7 @@ export const ActiveAds = (): ReactElement => {
 
         <Spacer />
 
-        <Link alignItems="center">
+        <Link alignItems="center" onPress={handleClickMyAds}>
           <Text fontWeight="bold" color="blue.700" textDecoration="none" mr={2}>
             Meus anúncios
           </Text>

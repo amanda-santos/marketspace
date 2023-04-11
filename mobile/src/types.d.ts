@@ -5,4 +5,5 @@ type Product = {
   price: number;
   image: string;
   isNew: boolean;
+  isActive: boolean;
 };

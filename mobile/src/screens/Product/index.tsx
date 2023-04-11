@@ -1,7 +1,6 @@
 import { Box, Flex, HStack, Image, Text, VStack } from "native-base";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import {
-  ArrowLeft,
   Bank,
   Barcode,
   CreditCard,
@@ -9,12 +8,13 @@ import {
   QrCode,
   WhatsappLogo,
 } from "phosphor-react-native";
-import { TouchableOpacity } from "react-native";
 
-import defaultAvatar from "@assets/default-avatar.png";
-import couch from "@assets/couch.jpg";
 import { Button } from "@components/Button";
 import { Label } from "@components/Label";
+import { Header } from "@components/Header";
+
+import couch from "@assets/couch.jpg";
+import defaultAvatar from "@assets/default-avatar.png";
 
 type RouteParamsProps = {
   productId: string;
@@ -23,19 +23,12 @@ type RouteParamsProps = {
 export const Product = () => {
   const route = useRoute();
   const { productId } = route.params as RouteParamsProps;
-  const navigation = useNavigation();
-
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
 
   return (
     <>
       <VStack flex={1} backgroundColor="gray.200">
-        <Box py={6} px={6}>
-          <TouchableOpacity onPress={handleGoBack}>
-            <ArrowLeft />
-          </TouchableOpacity>
+        <Box px={6}>
+          <Header showBackButton />
         </Box>
 
         <Image source={couch} alt="" width="100%" height={280} />

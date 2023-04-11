@@ -8,9 +8,9 @@ import { Label } from "./Label";
 import defaultAvatar from "@assets/default-avatar.png";
 import couch from "@assets/couch.jpg";
 
-type ProductCardProps = Pick<Product, "id" | "isNew">;
+type ProductCardProps = Pick<Product, "id" | "isNew" | "isActive">;
 
-export const ProductCard = ({ id, isNew }: ProductCardProps) => {
+export const ProductCard = ({ id, isNew, isActive }: ProductCardProps) => {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   const handleOpenProductDetails = () => {
@@ -22,36 +22,61 @@ export const ProductCard = ({ id, isNew }: ProductCardProps) => {
   return (
     <TouchableOpacity onPress={handleOpenProductDetails}>
       <Box position="relative" mb={1}>
-        <Image source={couch} alt="" height={100} borderRadius={6} />
+        <Box opacity={isActive ? 1 : 0.5}>
+          <Image source={couch} alt="" height={100} borderRadius={6} />
 
-        <Image
-          position="absolute"
-          top={1}
-          left={1}
-          source={defaultAvatar}
-          defaultSource={defaultAvatar}
-          alt=""
-          size={6}
-        />
+          <Image
+            position="absolute"
+            top={1}
+            left={1}
+            source={defaultAvatar}
+            defaultSource={defaultAvatar}
+            alt=""
+            size={6}
+          />
 
-        <Label
-          text={isNew ? "Novo" : "Usado"}
-          variant={isNew ? "blue" : "dark-gray"}
-          position="absolute"
-          right={1}
-          top={1}
-        />
+          <Label
+            text={isNew ? "Novo" : "Usado"}
+            variant={isNew ? "blue" : "dark-gray"}
+            position="absolute"
+            right={1}
+            top={1}
+          />
+        </Box>
+
+        {!isActive && (
+          <Text
+            textTransform="uppercase"
+            fontSize="xxs"
+            fontWeight="bold"
+            color="gray.700"
+            position="absolute"
+            bottom={1}
+            left={1}
+          >
+            Anúncio desativado
+          </Text>
+        )}
       </Box>
 
-      <Text fontSize="sm" color="gray.600">
+      <Text fontSize="sm" color={isActive ? "gray.600" : "gray.400"}>
         Sofá 1,80m
       </Text>
 
       <Flex direction="row" align="center">
-        <Text fontSize="xs" mr={1} fontWeight="bold">
+        <Text
+          fontSize="xs"
+          mr={1}
+          fontWeight="bold"
+          color={isActive ? "gray.600" : "gray.400"}
+        >
           R$
         </Text>
-        <Text fontSize="md" fontWeight="bold">
+        <Text
+          fontSize="md"
+          fontWeight="bold"
+          color={isActive ? "gray.600" : "gray.400"}
+        >
           1.200,00
         </Text>
       </Flex>

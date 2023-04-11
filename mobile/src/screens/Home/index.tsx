@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import { ScrollView, VStack } from "native-base";
 
-import { ActiveAds, Header, ProductList, Search } from "./components";
+import { ActiveAds, Header, Search } from "./components";
+import { ProductList } from "@components/ProductList";
 
 export const Home = (): ReactElement => {
   return (
