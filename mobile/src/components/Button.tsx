@@ -57,7 +57,11 @@ export const Button = ({
       {...rest}
     >
       {icon ? (
-        <Flex direction="row" align="center">
+        <Flex
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           {icon} {text}
         </Flex>
       ) : (

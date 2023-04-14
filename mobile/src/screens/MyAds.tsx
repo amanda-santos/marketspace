@@ -41,8 +41,9 @@ export const MyAds = (): ReactElement => {
               selectedValue={selectedAds}
               onValueChange={(itemValue) => setSelectedAds(itemValue)}
               height={8}
-              minWidth="112"
+              minWidth={112}
               borderRadius={8}
+              fontSize="sm"
               accessibilityLabel="Selecione o tipo de anúncio"
               dropdownIcon={
                 <CaretDown
