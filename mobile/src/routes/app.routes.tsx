@@ -9,11 +9,15 @@ import { useTheme } from "native-base";
 import { Home } from "@screens/Home";
 import { MyAds } from "@screens/MyAds";
 import { Product } from "@screens/Product";
+import { CreateProduct } from "@screens/CreateProduct";
+import { EditProduct } from "@screens/EditProduct";
 
 type AppRoutes = {
   home: undefined;
   myAds: undefined;
   signOut: undefined;
+  createProduct: undefined;
+  editProduct: undefined;
   product: {
     productId: string;
   };
@@ -73,6 +77,18 @@ export const AppRoutes = () => {
       <Screen
         name="product"
         component={Product}
+        options={{ tabBarButton: () => null, tabBarStyle: { display: "none" } }}
+      />
+
+      <Screen
+        name="createProduct"
+        component={CreateProduct}
+        options={{ tabBarButton: () => null, tabBarStyle: { display: "none" } }}
+      />
+
+      <Screen
+        name="editProduct"
+        component={EditProduct}
         options={{ tabBarButton: () => null, tabBarStyle: { display: "none" } }}
       />
     </Navigator>

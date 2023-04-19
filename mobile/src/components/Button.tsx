@@ -16,6 +16,7 @@ export const Button = ({
   title,
   icon,
   variant = "grey",
+  size = 40,
   ...rest
 }: ButtonProps) => {
   const getBackgroundColor = (variant: string) => {
@@ -44,7 +45,7 @@ export const Button = ({
 
   return (
     <ButtonNativeBase
-      w="full"
+      size={size}
       h={12}
       bg={backgroundColor}
       borderWidth={0}

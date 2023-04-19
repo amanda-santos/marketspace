@@ -2,13 +2,21 @@ import { ReactElement, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { Box, ScrollView, Select, Text, VStack, useTheme } from "native-base";
 import { CaretDown, Plus } from "phosphor-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Header } from "@components/Header";
 import { ProductList } from "@components/ProductList";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 export const MyAds = (): ReactElement => {
   const [selectedAds, setSelectedAds] = useState("all");
   const { colors } = useTheme();
+
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const handleCreateProductClick = () => {
+    navigation.navigate("createProduct");
+  };
 
   return (
     <ScrollView
@@ -21,7 +29,7 @@ export const MyAds = (): ReactElement => {
             showBackButton
             title="Meus anúncios"
             rightSideButton={
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleCreateProductClick}>
                 <Plus />
               </TouchableOpacity>
             }

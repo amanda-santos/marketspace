@@ -9,7 +9,7 @@ import {
   VStack,
   View,
 } from "native-base";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import {
   ArrowLeft,
   Bank,
@@ -27,6 +27,7 @@ import { Footer } from "./components/Footer";
 import couch from "@assets/couch.jpg";
 import defaultAvatar from "@assets/default-avatar.png";
 import { FooterMode } from "./constants";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 type RouteParamsProps = {
   productId: string;
@@ -41,6 +42,7 @@ export const Product = () => {
     // isInPreviewMode,
     // canEdit,
   } = route.params as RouteParamsProps;
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   const isActive = false;
 
@@ -51,6 +53,10 @@ export const Product = () => {
     if (isInPreviewMode) return FooterMode.PREVIEW;
     if (canEdit) return FooterMode.EDIT;
     return FooterMode.DEFAULT;
+  };
+
+  const handleEditProductClick = () => {
+    navigation.navigate("editProduct");
   };
 
   return (
@@ -75,7 +81,7 @@ export const Product = () => {
             showBackButton
             rightSideButton={
               canEdit ? (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleEditProductClick}>
                   <PencilSimpleLine />
                 </TouchableOpacity>
               ) : (

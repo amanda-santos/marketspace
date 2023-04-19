@@ -38,7 +38,7 @@ export const Header = ({
         {title}
       </Text>
 
-      {rightSideButton}
+      {rightSideButton ?? <Box />}
     </Box>
   );
 };
